@@ -20,9 +20,10 @@ gulp.task('cleanCSS', () =>
     .pipe(gulp.dest('tmp'))
 )
 
-gulp.task('icons', () =>
-  gulp.src('./icon/*.*').pipe(gulp.dest('./dist/icon'))
-)
+gulp.task('icons', () => {
+  gulp.src('./icon/*.jpeg').pipe(gulp.dest('./dist/icon'))
+  gulp.src('./icon/*.ico').pipe(gulp.dest('./dist'))
+})
 
 gulp.task('default', ['index', 'cleanCSS', 'icons'])
 
