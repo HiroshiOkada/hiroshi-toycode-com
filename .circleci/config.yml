@@ -6,5 +6,7 @@ jobs:
      steps:
        - checkout
        - run: pip install -q awscli --upgrade
-       - run: aws s3 sync html/ s3://toycode-homepage/
+       - run: npm install
+       - run: npm run build
+       - run: aws s3 sync dist/ s3://hiroshi.toycode.com/ --delete
 
