@@ -1,0 +1,58 @@
+doctype html
+html(lang='ja')
+  head
+    meta(charset='utf-8')
+    title Hiroshi Okada
+    // inject-style src="./tmp/my.css"
+    meta(name='viewport', content='width=device-width,initial-scale=1')
+    link(rel="icon" type="image/vnd.microsoft.icon" href="favicon.ico?t=1519704652028")
+    link(rel="icon" type="image/png" href="icon/favicon-16.png?t=1519704652028" sizes="16x16")
+    link(rel="icon" type="image/png" href="icon/favicon-24.png?t=1519704652028" sizes="24x24")
+    link(rel="icon" type="image/png" href="icon/favicon-32.png?t=1519704652028" sizes="32x32")
+    link(rel="icon" type="image/png" href="icon/favicon-64.png?t=1519704652028" sizes="64x64")
+    link(rel="apple-touch-icon" href="icon/apple-touch-icon.png?t=1519704652028" sizes="180x180")
+  body
+    section.main
+      header
+        h1
+          img(src='img/me.jpeg')
+          span.h1-text Hiroshi Okada
+      article
+        dl
+          dt 名前
+          dd
+            ruby
+              | 岡田
+              rt おかだ
+              | 洋
+              rt ひろし
+          dt 生年月日
+          dd 1961年11月7日
+          dt 住所
+          dd 東京都新宿区
+          dt メール
+          dd 岡田洋(全部小文字)@miobox.jp
+          dt On Web
+          dd
+            a(href='http://okadahiroshi.hatenablog.com/' target='_blank') Okada Hiroshi の blog
+          dd
+            a(href='http://okadahiroshi.blogspot.jp/' target='_blank') My lunch and other things
+          dd
+            a(href='https://github.com/HiroshiOkada' target='_blank') GitHub
+          dd
+            a(href='https://www.facebook.com/hiroshi.megane' target='_blank') Facebook
+          dd
+            a(href='https://mastodon.toycode.com/' target='_blank') Mastodon
+          dd
+            a(href='https://twitter.com/') Twitter
+          dt 履歴
+          dd 1977年　大阪府富田林市立金剛中学校卒
+          dd 1980年　大阪府立長野高等学校卒
+          dd 1986年　青山学院大学理工部部物理学科卒
+          dd 1986年　株式会社バンダイに就職
+          dd 2011年　株式会社バンダイナムコゲームズに転籍
+          dd 2012年　株式会社バンダイナムコスタジオに転籍
+          dd 2014年　同社を退職
+          dd 現在 フリーエンジニア
+      footer
+        p= `last update ${new Date()}`

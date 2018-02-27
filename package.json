@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "build": "gulp",
+    "watch": "gulp watch"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-pug": "^3.3.0",
+    "gulp-style-inject": "^0.1.0",
+    "gulp-clean-css": "^3.9.2",
+    "gulp-html-img64": "^1.0.7",
+    "eslint": "^4.18.1",
+    "eslint-plugin-node": "^6.0.1"
+  }
+}

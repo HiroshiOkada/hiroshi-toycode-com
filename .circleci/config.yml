@@ -1,0 +1,10 @@
+version: 2
+jobs:
+   build:
+     docker:
+       - image: okadahiroshi/buildenv:artful
+     steps:
+       - checkout
+       - run: pip install -q awscli --upgrade
+       - run: aws s3 sync html/ s3://toycode-homepage/
+

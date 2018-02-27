@@ -1,0 +1,26 @@
+@media (min-width: 410px) {
+  body {
+    width: 400px;
+    margin: 20px auto 0;
+  }
+}
+
+.h1-text {
+  color: DimGray;
+  font-size: 1.5rem;
+  margin-left: 1rem;
+}
+
+dt {
+  margin-top: 1rem;
+}
+
+dd {
+  margin-top: 0.5rem;
+}
+
+footer {
+  margin-top: 2rem;
+  font-size: 0.7rem;
+  text-align: right;
+}
