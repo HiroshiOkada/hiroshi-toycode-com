@@ -2,11 +2,10 @@ version: 2
 jobs:
    build:
      docker:
-       - image: okadahiroshi/buildenv:artful
+       - image: circleci/node:10
      steps:
        - checkout
        - run: pip install -q awscli --upgrade
        - run: npm install
        - run: npm run build
        - run: aws s3 sync dist/ s3://hiroshi.toycode.com/ --delete
-
