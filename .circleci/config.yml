@@ -2,7 +2,7 @@ version: 2
 jobs:
    build:
      environment:
-         PATH: /home/circleci/project/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+         PATH: /home/circleci/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
      docker:
        - image: circleci/node:8-stretch
      steps:
