@@ -10,6 +10,7 @@ const css = (done) => {
     .src('./css/*.css')
     .pipe(cleanCSS())
     .pipe(gulp.dest('tmp'))
+  console.log('css')
   done()
 }
 
@@ -20,6 +21,7 @@ const html = (done) => {
     .pipe(htmlImg64())
     .pipe(styleInject())
     .pipe(gulp.dest('dist'))
+  console.log('html')
   done()
 }
 
@@ -28,6 +30,7 @@ const assets = (done) => {
     () => gulp.src('./icon/*.png').pipe(gulp.dest('./dist/icon')),
     () => gulp.src('./icon/*.ico').pipe(gulp.dest('./dist'))
   )
+  console.log('assets')
   done()
 }
 
@@ -46,7 +49,10 @@ const reload = (done) => {
 }
 
 
-const end = (done) => done()
+const end = (done) => {
+  console.log('end')
+  done()
+}
 
 gulp.task('default', gulp.series(
   gulp.parallel(html_css, assets), end))
