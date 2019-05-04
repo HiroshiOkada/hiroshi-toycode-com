@@ -6,7 +6,8 @@ jobs:
      steps:
        - checkout
        - run: sudo apt-get install -y python-pip
-       - run: pip install -q awscli --upgrade
+       - run: pip install awscli --upgrade --user
+       - run: aws --version
        - run: npm ci
        - run: npm run build
        - run: aws s3 sync dist/ s3://hiroshi.toycode.com/ --delete
