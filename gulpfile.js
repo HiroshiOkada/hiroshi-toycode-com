@@ -26,10 +26,8 @@ const html = (done) => {
 }
 
 const assets = (done) => {
-  gulp.parallel(
-    () => gulp.src('./icon/*.png').pipe(gulp.dest('./dist/icon')),
-    () => gulp.src('./icon/*.ico').pipe(gulp.dest('./dist'))
-  )
+  gulp.src('./icon/*.png').pipe(gulp.dest('./dist/icon')),
+  gulp.src('./icon/*.ico').pipe(gulp.dest('./dist'))
   console.log('assets')
   done()
 }
