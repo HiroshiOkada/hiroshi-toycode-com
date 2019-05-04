@@ -5,32 +5,30 @@ const cleanCSS = require('gulp-clean-css')
 const htmlImg64 = require('gulp-html-img64')
 const browserSync = require('browser-sync')
 
-const css = (done) => {
-  gulp
-    .src('./css/*.css')
-    .pipe(cleanCSS())
-    .pipe(gulp.dest('tmp'))
-  console.log('css')
+const end = (done) => {
   done()
 }
 
-const html = (done) => {
-  gulp
+const css = () => {
+  return gulp
+    .src('./css/*.css')
+    .pipe(cleanCSS())
+    .pipe(gulp.dest('tmp'))
+}
+
+const html = () => {
+  return gulp
     .src('./index.pug')
     .pipe(pug())
     .pipe(htmlImg64())
     .pipe(styleInject())
     .pipe(gulp.dest('dist'))
-  console.log('html')
-  done()
 }
 
-const assets = (done) => {
-  gulp.src('./icon/*.png').pipe(gulp.dest('./dist/icon')),
-  gulp.src('./icon/*.ico').pipe(gulp.dest('./dist'))
-  console.log('assets')
-  done()
-}
+const png = () => gulp.src('./icon/*.png').pipe(gulp.dest('./dist/icon'))
+const ico = () => gulp.src('./icon/*.ico').pipe(gulp.dest('./dist'))
+
+const assets = gulp.series(png, ico)
 
 const html_css = gulp.series(css, html)
 
@@ -43,12 +41,6 @@ const start_browersync = (done) => {
 
 const reload = (done) => {
   browserSync.reload()
-  done()
-}
-
-
-const end = (done) => {
-  console.log('end')
   done()
 }
 
