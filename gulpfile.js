@@ -3,31 +3,62 @@ const pug = require('gulp-pug')
 const styleInject = require('gulp-style-inject')
 const cleanCSS = require('gulp-clean-css')
 const htmlImg64 = require('gulp-html-img64')
+const browserSync = require('browser-sync')
 
-gulp.task('index', ['cleanCSS'], () =>
-  gulp
-    .src('./index.pug')
-    .pipe(pug())
-    .pipe(styleInject())
-    .pipe(htmlImg64())
-    .pipe(gulp.dest('dist'))
-)
-
-gulp.task('cleanCSS', () =>
+const css = (done) => {
   gulp
     .src('./css/*.css')
     .pipe(cleanCSS())
     .pipe(gulp.dest('tmp'))
-)
+  done()
+}
 
-gulp.task('icons', () => {
-  gulp.src('./icon/*.jpeg').pipe(gulp.dest('./dist/icon'))
-  gulp.src('./icon/*.ico').pipe(gulp.dest('./dist'))
-})
+const html = (done) => {
+  gulp
+    .src('./index.pug')
+    .pipe(pug())
+    .pipe(htmlImg64())
+    .pipe(styleInject())
+    .pipe(gulp.dest('dist'))
+  done()
+}
 
-gulp.task('default', ['index', 'cleanCSS', 'icons'])
+const assets = (done) => {
+  gulp.parallel(
+    () => gulp.src('./icon/*.png').pipe(gulp.dest('./dist/icon')),
+    () => gulp.src('./icon/*.ico').pipe(gulp.dest('./dist'))
+  )
+  done()
+}
 
-gulp.task('watch', () => {
-  gulp.watch('./index.pug', ['index'])
-  gulp.watch('./css/*.css', ['index', 'cleanCSS'])
-})
+const html_css = gulp.series(css, html)
+
+const start_browersync = (done) => {
+  browserSync.init({
+    server: { baseDir: "./dist" }
+  })
+  done()
+}
+
+const reload = (done) => {
+  browserSync.reload()
+  done()
+}
+
+
+const end = (done) => done()
+
+gulp.task('default', gulp.series(
+  gulp.parallel(html_css, assets), end))
+
+
+gulp.task('dev', gulp.series(
+  'default',
+  start_browersync,
+  gulp.parallel(
+    () => gulp.watch('./index.pug', gulp.series(html_css, reload)),
+    () => gulp.watch('./css/*.css', gulp.series(html_css, reload)),
+    () => gulp.watch('./icon/*.*', gulp.series(assets, reload)),
+  ),
+  end
+))
