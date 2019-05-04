@@ -1,6 +1,8 @@
 version: 2
 jobs:
    build:
+     environment:
+        PATH: .local/bin/:$PATH
      docker:
        - image: circleci/node:8-stretch
      steps:
@@ -8,6 +10,8 @@ jobs:
        - run: sudo apt-get install -y python3-pip
        - run: pip3 install awscli --upgrade --user
        - run: ls ~/.local
+       - run: pwd
+       - run: env
        - run: aws --version
        - run: npm ci
        - run: npm run build
