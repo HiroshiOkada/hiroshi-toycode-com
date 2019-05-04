@@ -1,0 +1,2 @@
+     environment:
+        PATH: .local/bin/:$PATH

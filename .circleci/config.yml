@@ -1,8 +1,6 @@
 version: 2
 jobs:
    build:
-     environment:
-        PATH: .local/bin/:$PATH
      docker:
        - image: circleci/node:8-stretch
      steps:
