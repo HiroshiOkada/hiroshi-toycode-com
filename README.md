@@ -14,3 +14,6 @@ npm install
 npm run build
 npm run watch
 
+## デプロイ
+
+急がない時は github にプッシュすれば circle-ci で自動デプロイ
