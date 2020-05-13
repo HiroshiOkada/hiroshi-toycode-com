@@ -7,8 +7,7 @@ jobs:
        - image: circleci/node:8-stretch
      steps:
        - checkout
-       - run: sudo apt-get install -y python3-pip
-       - run: pip3 install awscli --upgrade --user
+       - run: sudo apt-get install -y awscli
        - run: npm ci
        - run: npm run build
        - run: aws s3 sync dist/ s3://hiroshi.toycode.com/ --delete
